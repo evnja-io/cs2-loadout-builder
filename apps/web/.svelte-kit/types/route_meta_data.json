@@ -1,0 +1,18 @@
+{
+	"/": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/builder": [
+		"src/routes/builder/+page.ts",
+		"src/routes/+layout.ts"
+	],
+	"/share/[slug]": [
+		"src/routes/share/[slug]/+page.ts",
+		"src/routes/+layout.ts"
+	],
+	"/u/[steamId]": [
+		"src/routes/u/[steamId]/+page.ts",
+		"src/routes/+layout.ts"
+	]
+}

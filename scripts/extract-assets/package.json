@@ -1,0 +1,22 @@
+{
+  "name": "@lb/extract-assets",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "sample": "tsx src/index.ts --sample",
+    "full": "tsx src/index.ts --full",
+    "seed": "node --env-file=../../apps/api/.env --import tsx/esm src/seed-db.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5",
+    "commander": "^12.1.0",
+    "postgres": "^3.4.5",
+    "drizzle-orm": "^0.38.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

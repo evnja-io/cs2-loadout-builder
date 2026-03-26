@@ -1,0 +1,19 @@
+{
+  "name": "loadout-builder",
+  "private": true,
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "dev:api": "pnpm --filter @lb/api dev",
+    "dev:web": "pnpm --filter @lb/web dev",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "build": "pnpm -r build"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
