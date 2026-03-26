@@ -1,12 +1,30 @@
 import { q as head, e as escape_html, a as attr, c as attr_class, b as ensure_array_like, s as stringify, d as derived, t as clsx } from "../../../../chunks/index.js";
-import { W as WeaponScene } from "../../../../chunks/WeaponScene.js";
+import "../../../../chunks/PaintkitMaterial.js";
+function WeaponScene($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let $$settled = true;
+    let $$inner_renderer;
+    function $$render_inner($$renderer3) {
+      $$renderer3.push(`<div class="w-full h-full min-h-96 rounded-lg overflow-hidden bg-gray-900">`);
+      {
+        $$renderer3.push("<!--[-1-->");
+        $$renderer3.push(`<div class="flex items-center justify-center h-full text-gray-500"><p>Select a weapon to preview</p></div>`);
+      }
+      $$renderer3.push(`<!--]--></div>`);
+    }
+    do {
+      $$settled = true;
+      $$inner_renderer = $$renderer2.copy();
+      $$render_inner($$inner_renderer);
+    } while (!$$settled);
+    $$renderer2.subsume($$inner_renderer);
+  });
+}
 const authStore = { loading: true };
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { data } = $$props;
     let selectedSkin = null;
-    let wear = 0.15;
-    let seed = 500;
     let likesAdjust = 0;
     const likesCount = derived(() => data.loadout.likesCount + likesAdjust);
     head("vecw56", $$renderer2, ($$renderer3) => {
@@ -28,7 +46,7 @@ function _page($$renderer, $$props) {
       $$renderer2.push(`<button${attr_class(`w-full text-left px-3 py-2 rounded hover:bg-gray-800 text-sm text-gray-300 transition-colors ${stringify(selectedSkin?.id === slot.skinId ? "bg-gray-800 text-white" : "")}`)}>${escape_html(weapon?.name ?? `Weapon #${slot.weaponDefIndex}`)}</button>`);
     }
     $$renderer2.push(`<!--]--></aside> <main class="flex-1 p-6">`);
-    WeaponScene($$renderer2, { skin: selectedSkin, wear, seed });
+    WeaponScene($$renderer2);
     $$renderer2.push(`<!----> `);
     {
       $$renderer2.push("<!--[-1-->");

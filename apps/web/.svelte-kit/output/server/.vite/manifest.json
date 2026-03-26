@@ -51,19 +51,12 @@
       "_internal.js"
     ]
   },
-  "_WeaponScene.CCODE3Z0.css": {
-    "file": "_app/immutable/assets/WeaponScene.CCODE3Z0.css",
-    "src": "_WeaponScene.CCODE3Z0.css"
-  },
-  "_WeaponScene.js": {
-    "file": "chunks/WeaponScene.js",
-    "name": "WeaponScene",
+  "_PaintkitMaterial.js": {
+    "file": "chunks/PaintkitMaterial.js",
+    "name": "PaintkitMaterial",
     "imports": [
-      "_index2.js",
-      "_index.js"
-    ],
-    "css": [
-      "_app/immutable/assets/WeaponScene.CCODE3Z0.css"
+      "_index.js",
+      "_index2.js"
     ]
   },
   "_environment.js": {
@@ -152,7 +145,7 @@
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "css": [
-      "_app/immutable/assets/_layout.DYYVtZjy.css"
+      "_app/immutable/assets/_layout.CYDXAi8l.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -177,7 +170,7 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_WeaponScene.js",
+      "_PaintkitMaterial.js",
       "_exports.js",
       "_utils.js",
       "_root.js",
@@ -197,7 +190,7 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_WeaponScene.js"
+      "_PaintkitMaterial.js"
     ]
   },
   "src/routes/share/[slug]/+page.ts": {

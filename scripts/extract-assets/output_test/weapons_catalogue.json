@@ -1,0 +1,443 @@
+[
+  {
+    "defIndex": 1,
+    "name": "Desert Eagle",
+    "internalName": "weapon_deagle",
+    "category": "pistols",
+    "modelPath": "weapons/models/deagle/weapon_pist_deagle.vmdl"
+  },
+  {
+    "defIndex": 2,
+    "name": "Dual Berettas",
+    "internalName": "weapon_elite",
+    "category": "pistols",
+    "modelPath": "weapons/models/elite/weapon_pist_elite.vmdl"
+  },
+  {
+    "defIndex": 3,
+    "name": "Five-SeveN",
+    "internalName": "weapon_fiveseven",
+    "category": "pistols",
+    "modelPath": "weapons/models/fiveseven/weapon_pist_fiveseven.vmdl"
+  },
+  {
+    "defIndex": 4,
+    "name": "Glock-18",
+    "internalName": "weapon_glock",
+    "category": "pistols",
+    "modelPath": "weapons/models/glock18/weapon_pist_glock18.vmdl"
+  },
+  {
+    "defIndex": 7,
+    "name": "AK-47",
+    "internalName": "weapon_ak47",
+    "category": "rifles",
+    "modelPath": "weapons/models/ak47/weapon_rif_ak47.vmdl"
+  },
+  {
+    "defIndex": 8,
+    "name": "AUG",
+    "internalName": "weapon_aug",
+    "category": "rifles",
+    "modelPath": "weapons/models/aug/weapon_rif_aug.vmdl"
+  },
+  {
+    "defIndex": 9,
+    "name": "AWP",
+    "internalName": "weapon_awp",
+    "category": "rifles",
+    "modelPath": "weapons/models/awp/weapon_snip_awp.vmdl"
+  },
+  {
+    "defIndex": 10,
+    "name": "FAMAS",
+    "internalName": "weapon_famas",
+    "category": "rifles",
+    "modelPath": "weapons/models/famas/weapon_rif_famas.vmdl"
+  },
+  {
+    "defIndex": 11,
+    "name": "G3SG1",
+    "internalName": "weapon_g3sg1",
+    "category": "rifles",
+    "modelPath": "weapons/models/g3sg1/weapon_snip_g3sg1.vmdl"
+  },
+  {
+    "defIndex": 13,
+    "name": "Galil AR",
+    "internalName": "weapon_galilar",
+    "category": "rifles",
+    "modelPath": "weapons/models/galilar/weapon_rif_galilar.vmdl"
+  },
+  {
+    "defIndex": 14,
+    "name": "M249",
+    "internalName": "weapon_m249",
+    "category": "heavy",
+    "modelPath": "weapons/models/m249/weapon_mach_m249.vmdl"
+  },
+  {
+    "defIndex": 16,
+    "name": "M4A4",
+    "internalName": "weapon_m4a1",
+    "category": "rifles",
+    "modelPath": "weapons/models/m4a4/weapon_rif_m4a4.vmdl"
+  },
+  {
+    "defIndex": 17,
+    "name": "MAC-10",
+    "internalName": "weapon_mac10",
+    "category": "smgs",
+    "modelPath": "weapons/models/mac10/weapon_smg_mac10.vmdl"
+  },
+  {
+    "defIndex": 19,
+    "name": "P90",
+    "internalName": "weapon_p90",
+    "category": "smgs",
+    "modelPath": "weapons/models/p90/weapon_smg_p90.vmdl"
+  },
+  {
+    "defIndex": 23,
+    "name": "MP5-SD",
+    "internalName": "weapon_mp5sd",
+    "category": "smgs",
+    "modelPath": "weapons/models/mp5sd/weapon_smg_mp5sd.vmdl"
+  },
+  {
+    "defIndex": 24,
+    "name": "UMP-45",
+    "internalName": "weapon_ump45",
+    "category": "smgs",
+    "modelPath": "weapons/models/ump45/weapon_smg_ump45.vmdl"
+  },
+  {
+    "defIndex": 25,
+    "name": "XM1014",
+    "internalName": "weapon_xm1014",
+    "category": "heavy",
+    "modelPath": "weapons/models/xm1014/weapon_shot_xm1014.vmdl"
+  },
+  {
+    "defIndex": 26,
+    "name": "PP-Bizon",
+    "internalName": "weapon_bizon",
+    "category": "smgs",
+    "modelPath": "weapons/models/bizon/weapon_smg_bizon.vmdl"
+  },
+  {
+    "defIndex": 27,
+    "name": "MAG-7",
+    "internalName": "weapon_mag7",
+    "category": "heavy",
+    "modelPath": "weapons/models/mag7/weapon_shot_mag7.vmdl"
+  },
+  {
+    "defIndex": 28,
+    "name": "Negev",
+    "internalName": "weapon_negev",
+    "category": "heavy",
+    "modelPath": "weapons/models/negev/weapon_mach_negev.vmdl"
+  },
+  {
+    "defIndex": 29,
+    "name": "Sawed-Off",
+    "internalName": "weapon_sawedoff",
+    "category": "heavy",
+    "modelPath": "weapons/models/sawedoff/weapon_shot_sawedoff.vmdl"
+  },
+  {
+    "defIndex": 30,
+    "name": "Tec-9",
+    "internalName": "weapon_tec9",
+    "category": "pistols",
+    "modelPath": "weapons/models/tec9/weapon_pist_tec9.vmdl"
+  },
+  {
+    "defIndex": 31,
+    "name": "Zeus x27",
+    "internalName": "weapon_taser",
+    "category": "pistols",
+    "modelPath": "weapons/models/taser/weapon_pist_taser.vmdl"
+  },
+  {
+    "defIndex": 32,
+    "name": "P2000",
+    "internalName": "weapon_hkp2000",
+    "category": "pistols",
+    "modelPath": "weapons/models/hkp2000/weapon_pist_hkp2000.vmdl"
+  },
+  {
+    "defIndex": 33,
+    "name": "MP7",
+    "internalName": "weapon_mp7",
+    "category": "smgs",
+    "modelPath": "weapons/models/mp7/weapon_smg_mp7.vmdl"
+  },
+  {
+    "defIndex": 34,
+    "name": "MP9",
+    "internalName": "weapon_mp9",
+    "category": "smgs",
+    "modelPath": "weapons/models/mp9/weapon_smg_mp9.vmdl"
+  },
+  {
+    "defIndex": 35,
+    "name": "Nova",
+    "internalName": "weapon_nova",
+    "category": "heavy",
+    "modelPath": "weapons/models/nova/weapon_shot_nova.vmdl"
+  },
+  {
+    "defIndex": 36,
+    "name": "P250",
+    "internalName": "weapon_p250",
+    "category": "pistols",
+    "modelPath": "weapons/models/p250/weapon_pist_p250.vmdl"
+  },
+  {
+    "defIndex": 38,
+    "name": "SCAR-20",
+    "internalName": "weapon_scar20",
+    "category": "rifles",
+    "modelPath": "weapons/models/scar20/weapon_snip_scar20.vmdl"
+  },
+  {
+    "defIndex": 39,
+    "name": "SG 553",
+    "internalName": "weapon_sg556",
+    "category": "rifles",
+    "modelPath": "weapons/models/sg556/weapon_rif_sg556.vmdl"
+  },
+  {
+    "defIndex": 40,
+    "name": "SSG 08",
+    "internalName": "weapon_ssg08",
+    "category": "rifles",
+    "modelPath": "weapons/models/ssg08/weapon_snip_ssg08.vmdl"
+  },
+  {
+    "defIndex": 60,
+    "name": "M4A1-S",
+    "internalName": "weapon_m4a1_silencer",
+    "category": "rifles",
+    "modelPath": "weapons/models/m4a1_silencer/weapon_rif_m4a1_silencer.vmdl"
+  },
+  {
+    "defIndex": 61,
+    "name": "USP-S",
+    "internalName": "weapon_usp_silencer",
+    "category": "pistols",
+    "modelPath": "weapons/models/usp_silencer/weapon_pist_usp_silencer.vmdl"
+  },
+  {
+    "defIndex": 63,
+    "name": "CZ75-Auto",
+    "internalName": "weapon_cz75a",
+    "category": "pistols",
+    "modelPath": "weapons/models/cz75a/weapon_pist_cz75a.vmdl"
+  },
+  {
+    "defIndex": 64,
+    "name": "R8 Revolver",
+    "internalName": "weapon_revolver",
+    "category": "pistols",
+    "modelPath": "weapons/models/revolver/weapon_pist_revolver.vmdl"
+  },
+  {
+    "defIndex": 500,
+    "name": "Bayonet",
+    "internalName": "weapon_bayonet",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 503,
+    "name": "Classic Knife",
+    "internalName": "weapon_knife_css",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 505,
+    "name": "Flip Knife",
+    "internalName": "weapon_knife_flip",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 506,
+    "name": "Gut Knife",
+    "internalName": "weapon_knife_gut",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 507,
+    "name": "Karambit",
+    "internalName": "weapon_knife_karambit",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 508,
+    "name": "M9 Bayonet",
+    "internalName": "weapon_knife_m9_bayonet",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 509,
+    "name": "Huntsman Knife",
+    "internalName": "weapon_knife_tactical",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 512,
+    "name": "Falchion Knife",
+    "internalName": "weapon_knife_falchion",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 514,
+    "name": "Bowie Knife",
+    "internalName": "weapon_knife_survival_bowie",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 515,
+    "name": "Butterfly Knife",
+    "internalName": "weapon_knife_butterfly",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 516,
+    "name": "Shadow Daggers",
+    "internalName": "weapon_knife_push",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 517,
+    "name": "Paracord Knife",
+    "internalName": "weapon_knife_cord",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 518,
+    "name": "Survival Knife",
+    "internalName": "weapon_knife_canis",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 519,
+    "name": "Ursus Knife",
+    "internalName": "weapon_knife_ursus",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 520,
+    "name": "Navaja Knife",
+    "internalName": "weapon_knife_gypsy_jackknife",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 521,
+    "name": "Nomad Knife",
+    "internalName": "weapon_knife_outdoor",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 522,
+    "name": "Stiletto Knife",
+    "internalName": "weapon_knife_stiletto",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 523,
+    "name": "Talon Knife",
+    "internalName": "weapon_knife_widowmaker",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 525,
+    "name": "Skeleton Knife",
+    "internalName": "weapon_knife_skeleton",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 526,
+    "name": "Knife Kukri",
+    "internalName": "weapon_knife_kukri",
+    "category": "knives",
+    "modelPath": "weapons/models/knife/knife_default_ct/weapon_knife_default_ct.vmdl"
+  },
+  {
+    "defIndex": 4725,
+    "name": "Studded Brokenfang Gloves",
+    "internalName": "studded_brokenfang_gloves",
+    "category": "gloves",
+    "modelPath": "characters/models/shared/arms/glove_brokenfang/v_glove_brokenfang.vmdl"
+  },
+  {
+    "defIndex": 5027,
+    "name": "Studded Bloodhound Gloves",
+    "internalName": "studded_bloodhound_gloves",
+    "category": "gloves",
+    "modelPath": "characters/models/shared/arms/glove_bloodhound/v_glove_bloodhound.vmdl"
+  },
+  {
+    "defIndex": 5030,
+    "name": "Sporty Gloves",
+    "internalName": "sporty_gloves",
+    "category": "gloves",
+    "modelPath": "characters/models/shared/arms/glove_sporty/v_glove_sporty.vmdl"
+  },
+  {
+    "defIndex": 5031,
+    "name": "Slick Gloves",
+    "internalName": "slick_gloves",
+    "category": "gloves",
+    "modelPath": "characters/models/shared/arms/glove_slick/v_glove_slick.vmdl"
+  },
+  {
+    "defIndex": 5032,
+    "name": "Leather Handwraps",
+    "internalName": "leather_handwraps",
+    "category": "gloves",
+    "modelPath": "characters/models/shared/arms/glove_handwrap/v_glove_handwrap.vmdl"
+  },
+  {
+    "defIndex": 5033,
+    "name": "Motorcycle Gloves",
+    "internalName": "motorcycle_gloves",
+    "category": "gloves",
+    "modelPath": "characters/models/shared/arms/glove_motorcycle/v_glove_motorcycle.vmdl"
+  },
+  {
+    "defIndex": 5034,
+    "name": "Specialist Gloves",
+    "internalName": "specialist_gloves",
+    "category": "gloves",
+    "modelPath": "characters/models/shared/arms/glove_specialist/v_glove_specialist.vmdl"
+  },
+  {
+    "defIndex": 5035,
+    "name": "Studded Hydra Gloves",
+    "internalName": "studded_hydra_gloves",
+    "category": "gloves",
+    "modelPath": "characters/models/shared/arms/glove_hydra/v_glove_hydra.vmdl"
+  }
+]

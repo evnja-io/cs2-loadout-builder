@@ -38,6 +38,9 @@
  * The above values will be the same _even if_ different values for `ENVIRONMENT` or `PUBLIC_BASE_URL` are set at runtime, as they are statically replaced in your code with their build time values.
  */
 declare module '$env/static/private' {
+	export const VITE_API_URL: string;
+	export const VITE_ASSETS_BASE_URL: string;
+	export const VITE_TEXTURE_CACHE_SIZE: string;
 	export const VSCODE_CWD: string;
 	export const VSCODE_ESM_ENTRYPOINT: string;
 	export const USER: string;
@@ -108,6 +111,7 @@ declare module '$env/static/private' {
 	export const npm_config_shamefully_hoist: string;
 	export const WSLENV: string;
 	export const INIT_CWD: string;
+	export const NODE_ENV: string;
 }
 
 /**
@@ -194,6 +198,9 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		VITE_API_URL: string;
+		VITE_ASSETS_BASE_URL: string;
+		VITE_TEXTURE_CACHE_SIZE: string;
 		VSCODE_CWD: string;
 		VSCODE_ESM_ENTRYPOINT: string;
 		USER: string;
@@ -264,6 +271,7 @@ declare module '$env/dynamic/private' {
 		npm_config_shamefully_hoist: string;
 		WSLENV: string;
 		INIT_CWD: string;
+		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

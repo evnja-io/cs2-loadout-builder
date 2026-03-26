@@ -17,6 +17,7 @@
     wear: number;
     seed: number;
     assetsBase?: string;
+    modelMissing?: boolean;
   }
 
   let {
@@ -24,6 +25,7 @@
     wear,
     seed,
     assetsBase = import.meta.env.VITE_ASSETS_BASE_URL ?? '/assets',
+    modelMissing = $bindable(false),
   }: Props = $props();
 
   function texUrl(path: string | null | undefined): string | null {
@@ -56,6 +58,7 @@
     const finishStyle = FINISH_STYLE_MAP[skin.finishStyle as FinishStyleKey] ?? 1;
 
     let disposed = false;
+    modelMissing = false;
 
     const store = gltfLoader.load(url);
 
@@ -85,6 +88,8 @@
 
       material = mat;
       scene = gltf.scene;
+    }).catch(() => {
+      if (!disposed) modelMissing = true;
     });
 
     return () => {

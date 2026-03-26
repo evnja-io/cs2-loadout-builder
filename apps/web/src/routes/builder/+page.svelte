@@ -6,7 +6,7 @@
   import LoadoutHeader from '$lib/components/LoadoutHeader.svelte';
   import ShareModal from '$lib/components/ShareModal.svelte';
   import { loadoutStore } from '$lib/stores/loadout.svelte.js';
-  import { loadCurrentUser } from '$lib/stores/auth.svelte.js';
+  import { authStore, loadCurrentUser } from '$lib/stores/auth.svelte.js';
   import { getLoadouts, createLoadout } from '$lib/api/loadouts.js';
   import { getWeapons } from '$lib/api/weapons.js';
   import { apiFetch } from '$lib/api/client.js';
@@ -30,15 +30,19 @@
     (async () => {
       try {
         await loadCurrentUser();
-        const [weaponData, loadoutData] = await Promise.all([getWeapons(), getLoadouts()]);
+        const weaponData = await getWeapons();
         weapons = weaponData;
-        allLoadouts = loadoutData;
-        if (loadoutData.length > 0) {
-          loadoutStore.setActiveLoadout(loadoutData[0]!);
-        } else {
-          const newLoadout = await createLoadout('My Loadout');
-          allLoadouts = [newLoadout];
-          loadoutStore.setActiveLoadout(newLoadout);
+
+        if (authStore.user) {
+          const loadoutData = await getLoadouts();
+          allLoadouts = loadoutData;
+          if (loadoutData.length > 0) {
+            loadoutStore.setActiveLoadout(loadoutData[0]!);
+          } else {
+            const newLoadout = await createLoadout('My Loadout');
+            allLoadouts = [newLoadout];
+            loadoutStore.setActiveLoadout(newLoadout);
+          }
         }
       } catch {
         initError = 'Failed to load. Please refresh.';

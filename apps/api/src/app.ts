@@ -24,7 +24,11 @@ export async function buildApp(opts: AppOptions = {}): Promise<FastifyInstance> 
 
   await app.register(cookie);
   await app.register(cors, {
-    origin: opts.webUrl ?? process.env['WEB_URL'] ?? 'http://localhost:5173',
+    origin: opts.webUrl ?? process.env['WEB_URL'] ?? [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'http://localhost:5175',
+    ],
     credentials: true,
   });
   const jwtSecret = opts.jwtSecret ?? process.env['JWT_SECRET'];

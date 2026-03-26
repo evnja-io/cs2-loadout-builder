@@ -1,5 +1,4 @@
 import { browser } from '$app/environment';
-import { redirect } from '@sveltejs/kit';
 import { apiFetch } from '$lib/api/client.js';
 import type { User } from '@lb/shared';
 
@@ -9,6 +8,6 @@ export async function load() {
     const user = await apiFetch<User>('/auth/me');
     return { user };
   } catch {
-    redirect(302, '/');
+    return { user: null };
   }
 }

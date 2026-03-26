@@ -1,4 +1,4 @@
-import { n as noop, x as run_all } from "./index.js";
+import { n as noop, w as run_all } from "./index.js";
 import { u as untrack, L as safe_not_equal } from "./runtime.js";
 function subscribe_to_store(store, run, invalidate) {
   if (store == null) {

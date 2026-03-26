@@ -18,7 +18,7 @@ uniform float uPhase;      // g_flPhase (unused at base level, available for fut
 // Paintkit control
 uniform float uWear;        // 0.0 (FN) → 1.0 (BS)
 uniform float uSeed;        // normalized: (seed-1)/999 → [0,1]
-uniform int   uFinishStyle; // 0=solid 1=hydro 2=spray 3=anodized 4=anodized-multi 5=anodized-multi 6=custom 7=gunsmith
+uniform int   uFinishStyle; // 0=solid 1=hydro 2=spray 3=anodized 4=anodized-multi 5=gunsmith 6=custom-paint-job
 
 // Lighting
 uniform vec3 uLightDir;
@@ -56,13 +56,13 @@ vec3 applyFinish(vec4 pattern, int style) {
     vec3 cd = mix(uColorC.rgb, uColorD.rgb, clamp(t * 2.0 - 1.0, 0.0, 1.0));
     return mix(ab, cd, step(0.5, t));
 
-  } else if (style == 7) {
+  } else if (style == 5) {
     // Gunsmith — metalness map drives blend between color and pattern
     float metal = texture2D(tMetalness, vUv).r;
     return mix(uColorA.rgb, uColorB.rgb * pattern.rgb, metal);
 
   } else {
-    // Custom-paint-job (Asiimov, Bloodsport, etc.) — pattern alpha composites over base
+    // Custom-paint-job (6) or vcompmat skins — pattern is the full albedo
     return mix(uColorA.rgb, pattern.rgb, pattern.a);
   }
 }

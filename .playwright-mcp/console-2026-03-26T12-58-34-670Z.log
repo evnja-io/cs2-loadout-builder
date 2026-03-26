@@ -1,0 +1,7 @@
+[      91ms] [WARNING] Loading http://localhost:3001/auth/me using `window.fetch`. For best results, use the `fetch` that is passed to your `load` function: https://svelte.dev/docs/kit/load#making-fetch-requests @ http://localhost:5173/@fs/home/sephi/loadout-builder/node_modules/.pnpm/@sveltejs+kit@2.55.0_@sveltejs+vite-plugin-svelte@6.2.4_svelte@5.55.0_vite@6.4.1_@types_3ad86c26e7e90ac72c397a79ebd57e73/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=a300bb0a:3298
+[      98ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3001/auth/me:0
+[     101ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3001/auth/me:0
+[   31688ms] [WARNING] [.WebGL-0xf2c00115a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ http://localhost:5173/builder:0
+[   31688ms] [WARNING] [.WebGL-0xf2c00115a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ http://localhost:5173/builder:0
+[   31701ms] [WARNING] [.WebGL-0xf2c00115a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ http://localhost:5173/builder:0
+[   31776ms] [WARNING] [.WebGL-0xf2c00115a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat) @ http://localhost:5173/builder:0

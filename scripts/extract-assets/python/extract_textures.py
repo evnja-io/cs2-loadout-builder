@@ -244,6 +244,7 @@ def main() -> None:
             'wearMin': float(kit.get('wear_remap_min', 0.0)),
             'wearMax': float(kit.get('wear_remap_max', 1.0)),
             'descTag': kit.get('description_tag', '').lstrip('#'),
+            'compmatPath': kit.get('composite_material_path', ''),
         }
     log.info(f'Found {len(paint_kits):,} paint kits')
 
@@ -406,7 +407,27 @@ def main() -> None:
     for s in skins_catalogue:
         skins_by_kit.setdefault(s['paintKitId'], []).append(s)
 
-    # ─── 12. Texture extractor helper ─────────────────────────────────────────
+    # ─── 12. Texture helpers ───────────────────────────────────────────────────
+    def _get_vcompmat_textures(mat: 'CompiledMaterialResource') -> dict:
+        """Extract texture runtime paths from a vcompmat resource.
+        Returns {param_name: vtex_c_path} for pattern and metalness textures.
+        The returned paths are already the compiled vtex_c paths (no _c suffix needed)."""
+        result: dict[str, str] = {}
+        try:
+            d = mat.data_block.to_dict()
+            proc = d['m_Points'][0]['m_vecCompositeMaterialAssemblyProcedures'][0]
+            for container in proc.get('m_vecCompositeInputContainers', []):
+                for var in container.get('m_vecLooseVariables', []):
+                    name = var.get('m_strName', '')
+                    runtime = var.get('m_strTextureRuntimeResourcePath', '')
+                    if runtime and name in ('g_tPattern', 'g_tPaintMetalness', 'g_tPaintRoughness'):
+                        # Runtime path is e.g. "items/assets/.../albedo.vtex"
+                        # Compiled version adds _c: "items/assets/.../albedo.vtex_c"
+                        result[name] = runtime + '_c'
+        except Exception:
+            pass
+        return result
+
     def extract_texture(vpk_path: str, out_path: Path) -> bool:
         if out_path.exists():
             return True
@@ -467,6 +488,18 @@ def main() -> None:
 
         vmat_path = f'{vmats_base}/{kit_name}.vmat_c'
         vmat_data = vpk.find_file(vmat_path)
+
+        # Fallback: try composite material path (newer vcompmat format)
+        use_vcompmat = False
+        if vmat_data is None:
+            compmat = kit.get('compmatPath', '')
+            if compmat:
+                vcompmat_path = compmat + '_c'
+                vmat_data = vpk.find_file(vcompmat_path)
+                if vmat_data is not None:
+                    vmat_path = vcompmat_path
+                    use_vcompmat = True
+
         if vmat_data is None:
             n_skipped += 1
             continue
@@ -475,55 +508,67 @@ def main() -> None:
             mat = CompiledMaterialResource.from_buffer(
                 MemoryBuffer(vmat_data), TinyPath(vmat_path)
             )
-            textures = mat.get_used_textures()
+            if use_vcompmat:
+                textures = _get_vcompmat_textures(mat)
+            else:
+                textures = mat.get_used_textures()
         except Exception as exc:
             log.debug(f'  vmat parse failed {kit_name}: {exc}')
             n_failed += 1
             continue
 
         # Pattern texture
-        if pat := textures.get('g_tPattern'):
-            if extract_texture(pat + '_c', kit_dir / 'pattern.webp'):
+        pat_key = 'g_tPattern'
+        if pat := textures.get(pat_key):
+            tex_path = (pat + '_c') if not use_vcompmat else pat
+            if extract_texture(tex_path, kit_dir / 'pattern.webp'):
                 n_extracted += 1
 
         # Metalness texture (stored as roughness.webp for DB compat)
-        if metal := textures.get('g_tMetalness'):
-            if extract_texture(metal + '_c', kit_dir / 'roughness.webp'):
+        metal_key = 'g_tPaintMetalness' if use_vcompmat else 'g_tMetalness'
+        if metal := textures.get(metal_key):
+            tex_path = (metal + '_c') if not use_vcompmat else metal
+            if extract_texture(tex_path, kit_dir / 'roughness.webp'):
                 n_extracted += 1
 
-        # Shared grunge (extract once)
-        if not grunge_done:
+        # Shared grunge (extract once, only from vmat — vcompmat uses per-skin grunge)
+        if not grunge_done and not use_vcompmat:
             if grunge := textures.get('g_tGrunge'):
                 if extract_texture(grunge + '_c', output / 'shared' / 'grunge.webp'):
                     grunge_done = True
 
-        # Color params from vmat material data
-        try:
-            mat_dict = mat.data_block.to_dict()
-            int_p = {p['m_name']: p['m_nValue'] for p in mat_dict.get('m_intParams', [])}
-            float_p = {p['m_name']: p['m_flValue'] for p in mat_dict.get('m_floatParams', [])}
-            vec_p = {p['m_name']: p['m_value'] for p in mat_dict.get('m_vectorParams', [])}
+        # Color params from vmat material data (vcompmat skins use pattern as albedo — no color params)
+        if not use_vcompmat:
+            try:
+                mat_dict = mat.data_block.to_dict()
+                int_p = {p['m_name']: p['m_nValue'] for p in mat_dict.get('m_intParams', [])}
+                float_p = {p['m_name']: p['m_flValue'] for p in mat_dict.get('m_floatParams', [])}
+                vec_p = {p['m_name']: p['m_value'] for p in mat_dict.get('m_vectorParams', [])}
 
-            f_style = int(int_p.get('F_PAINT_STYLE', 0))
-            finish_from_vmat = VMAT_FINISH_STYLE.get(f_style, 'hydrographic')
+                f_style = int(int_p.get('F_PAINT_STYLE', 0))
+                finish_from_vmat = VMAT_FINISH_STYLE.get(f_style, 'hydrographic')
 
-            color_a = _clamp_vec4(vec_p.get('g_vColor0'))
-            color_b = _clamp_vec4(vec_p.get('g_vColor1'))
-            color_c = _clamp_vec4(vec_p.get('g_vColor2'))
-            color_d = _clamp_vec4(vec_p.get('g_vColor3'))
-            color_warp = float(float_p.get('g_flColorBrightness', 0.0))
-            phase = float(float_p.get('g_flPhase', 0.0))
+                color_a = _clamp_vec4(vec_p.get('g_vColor0'))
+                color_b = _clamp_vec4(vec_p.get('g_vColor1'))
+                color_c = _clamp_vec4(vec_p.get('g_vColor2'))
+                color_d = _clamp_vec4(vec_p.get('g_vColor3'))
+                color_warp = float(float_p.get('g_flColorBrightness', 0.0))
+                phase = float(float_p.get('g_flPhase', 0.0))
 
+                for entry in skins_by_kit.get(kit_id, []):
+                    entry['finishStyle'] = finish_from_vmat
+                    entry['colorA'] = color_a
+                    entry['colorB'] = color_b
+                    entry['colorC'] = color_c
+                    entry['colorD'] = color_d
+                    entry['colorWarp'] = color_warp
+                    entry['phase'] = phase
+            except Exception as exc:
+                log.debug(f'  Color params failed {kit_name}: {exc}')
+        else:
+            # vcompmat skins: pattern IS the albedo texture, render as spray-paint
             for entry in skins_by_kit.get(kit_id, []):
-                entry['finishStyle'] = finish_from_vmat
-                entry['colorA'] = color_a
-                entry['colorB'] = color_b
-                entry['colorC'] = color_c
-                entry['colorD'] = color_d
-                entry['colorWarp'] = color_warp
-                entry['phase'] = phase
-        except Exception as exc:
-            log.debug(f'  Color params failed {kit_name}: {exc}')
+                entry['finishStyle'] = 'spray-paint'
 
     log.info(f'Textures: {n_extracted} extracted, {n_skipped} no-vmat, {n_failed} failed')
 
